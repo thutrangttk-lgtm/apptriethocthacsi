@@ -70,14 +70,14 @@ export const ActiveRecallView: React.FC<ActiveRecallViewProps> = ({ topics }) =>
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       {/* Header Banner */}
-      <div className="card-3d p-6 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-amber-950 border-2 border-amber-500/30 shadow-md">
+      <div className="card-3d p-6 bg-pastel-pink border-2 border-pink-200/80 shadow-md">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-2xl bg-amber-950 text-amber-300 flex items-center justify-center font-black text-xl shadow-md">
+          <div className="w-12 h-12 rounded-2xl bg-[#EA4335] text-white flex items-center justify-center font-black text-xl shadow-md">
             🙈
           </div>
           <div>
-            <h2 className="text-2xl font-black text-amber-950">Active Recall (Đóng Sách Tự Nhớ)</h2>
-            <p className="text-xs text-amber-950 font-bold">
+            <h2 className="text-2xl font-black text-[#172554]">Active Recall (Đóng Sách Tự Nhớ)</h2>
+            <p className="text-xs text-[#475569] font-bold">
               Phương pháp ghi nhớ ngắt quãng cốt lõi: Tự tái hiện tri thức mà không nhìn giáo trình.
             </p>
           </div>

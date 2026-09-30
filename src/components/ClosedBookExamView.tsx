@@ -85,16 +85,16 @@ export const ClosedBookExamView: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       {/* 🔒 Closed-Book Visual Focus Mode Banner */}
-      <div className="bg-slate-950 p-6 rounded-3xl text-white shadow-xl flex items-center justify-between border-b-4 border-amber-400">
+      <div className="card-3d p-6 bg-pastel-lavender rounded-3xl border-2 border-purple-300 shadow-xl flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-2xl bg-amber-400 text-amber-950 flex items-center justify-center font-black text-2xl shadow-md border border-amber-500/30">
+          <div className="w-12 h-12 rounded-2xl bg-[#FBBC04] text-slate-950 flex items-center justify-center font-black text-2xl shadow-md border border-amber-400">
             🔒
           </div>
           <div>
-            <span className="text-[11px] font-black tracking-widest text-amber-950 uppercase bg-amber-400 px-2.5 py-0.5 rounded-full shadow-xs">
+            <span className="text-[11px] font-black tracking-widest text-slate-950 uppercase bg-[#FBBC04] px-2.5 py-0.5 rounded-full shadow-xs">
               CHẾ ĐỘ TỰ LUẬN ĐÓNG SÁCH
             </span>
-            <h2 className="text-xl font-black mt-1 text-white">ĐANG THI ĐÓNG SÁCH</h2>
+            <h2 className="text-xl font-black mt-1 text-[#172554]">ĐANG THI ĐÓNG SÁCH</h2>
           </div>
         </div>
 

@@ -95,7 +95,7 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-16">
       {/* Top Topic Selector Banner */}
-      <div className="card-3d p-6 bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white rounded-3xl shadow-lg border-2 border-blue-800">
+      <div className="card-3d p-6 bg-pastel-blue rounded-3xl border-2 border-blue-200/80 shadow-md">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
@@ -106,23 +106,23 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
                 {completedSteps.length} / 12 bước hoàn thành
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#172554] leading-tight">
               Topic {currentTopic.topic_number}: {currentTopic.title}
             </h2>
-            <div className="flex items-center space-x-2 text-xs text-blue-200 font-bold">
-              <BookMarked className="w-4 h-4 text-[#FBBC04]" />
+            <div className="flex items-center space-x-2 text-xs text-[#475569] font-bold">
+              <BookMarked className="w-4 h-4 text-[#4285F4]" />
               <span>Căn cứ Giáo trình Nguồn A (Trang {currentTopic.source_page_start || 7} – {currentTopic.source_page_end || 8})</span>
             </div>
           </div>
 
           <div className="shrink-0 w-full md:w-80">
-            <label className="block text-[11px] font-black text-blue-200 uppercase mb-1">
+            <label className="block text-[11px] font-black text-[#172554] uppercase mb-1">
               Chuyển chủ đề khác ({topics.length} chủ đề)
             </label>
             <select
               value={currentTopic.id}
               onChange={(e) => onSelectTopic(e.target.value)}
-              className="w-full bg-slate-950 text-white text-xs font-bold p-3 rounded-2xl border-2 border-blue-400/50 focus:outline-none focus:ring-2 focus:ring-[#FBBC04]"
+              className="w-full bg-white text-[#172554] text-xs font-bold p-3 rounded-2xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]"
             >
               {topics.map(t => (
                 <option key={t.id} value={t.id} className="text-slate-900 font-bold bg-white">

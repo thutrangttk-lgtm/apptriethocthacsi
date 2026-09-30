@@ -40,6 +40,14 @@ const CHAPTER_ICONS: Record<number, string> = {
   11: '✍️'  // Ý thức xã hội & Con người
 };
 
+const PASTEL_CARD_BG = [
+  'bg-gradient-to-br from-[#EAF4FF]/60 via-white to-white border-blue-200/90',
+  'bg-gradient-to-br from-[#FFF0F6]/60 via-white to-white border-pink-200/90',
+  'bg-gradient-to-br from-[#F3EEFF]/60 via-white to-white border-purple-200/90',
+  'bg-gradient-to-br from-[#FFF9E8]/60 via-white to-white border-amber-200/90',
+  'bg-gradient-to-br from-[#E6F7F0]/60 via-white to-white border-emerald-200/90'
+];
+
 export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter, onSelectTopic }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -69,9 +77,10 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter, onSelectTopic
   const status = chapter.status || (chapter.chapter_number <= 3 ? 'Đã nắm' : chapter.chapter_number <= 6 ? 'Đang học' : 'Chưa học');
   const config = statusConfig[status];
   const icon = CHAPTER_ICONS[chapter.chapter_number] || '📚';
+  const pastelBg = PASTEL_CARD_BG[(chapter.chapter_number - 1) % PASTEL_CARD_BG.length];
 
   return (
-    <div className="card-3d p-6 relative overflow-hidden group border-2 border-slate-200/90 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all rounded-3xl bg-white flex flex-col justify-between">
+    <div className={`card-3d p-6 relative overflow-hidden group border-2 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all rounded-3xl flex flex-col justify-between ${pastelBg}`}>
       {/* Background Accent Subtle Glow */}
       <div className="absolute -right-6 -top-6 w-24 h-24 bg-[#4285F4]/5 rounded-full blur-xl group-hover:bg-[#4285F4]/10 transition-all pointer-events-none" />
 
@@ -79,15 +88,15 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter, onSelectTopic
         {/* Chapter Header Badge */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-2xl shadow-2xs shrink-0 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-white/90 border border-slate-200/80 flex items-center justify-center text-2xl shadow-2xs shrink-0 group-hover:scale-110 transition-transform">
               <span>{icon}</span>
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-xs font-black text-[#4285F4] uppercase tracking-wider">
+                <span className="text-xs font-black text-[#172554] uppercase tracking-wider">
                   Chương {chapter.chapter_number}
                 </span>
-                <span className="text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full border border-slate-200">
+                <span className="text-[11px] font-bold bg-white/90 text-slate-700 px-2 py-0.5 rounded-full border border-slate-200 shadow-2xs">
                   Trang {chapter.source_page_start || 7}–{chapter.source_page_end || 556}
                 </span>
               </div>

@@ -76,14 +76,14 @@ export const OutlinePracticeView: React.FC<OutlinePracticeViewProps> = ({ topics
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
-      <div className="card-3d p-6 bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white shadow-lg border border-blue-800">
+      <div className="card-3d p-6 bg-pastel-lavender border-2 border-purple-200/80 shadow-md">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          <div className="w-12 h-12 rounded-2xl bg-[#4285F4] text-white flex items-center justify-center font-black text-xl shadow-md">
             ✍️
           </div>
           <div>
-            <h2 className="text-2xl font-black text-white">Lập Dàn Ý Tự Luận 6 Phần</h2>
-            <p className="text-xs text-blue-100 font-semibold">
+            <h2 className="text-2xl font-black text-[#172554]">Lập Dàn Ý Tự Luận 6 Phần</h2>
+            <p className="text-xs text-[#475569] font-bold">
               Rèn luyện kỹ năng xây dựng đề cương tự luận triết học chuẩn mực Nguồn A cho kỳ thi Thạc sĩ.
             </p>
           </div>

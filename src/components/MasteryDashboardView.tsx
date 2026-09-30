@@ -6,14 +6,14 @@ import { Award, Brain, Calendar, CheckCircle2, Clock, ShieldCheck, Sparkles, Zap
 export const MasteryDashboardView: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto space-y-8 pb-12">
-      <div className="card-3d p-6 bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white shadow-lg border border-blue-800">
+      <div className="card-3d p-6 bg-pastel-hero border-2 border-blue-200/80 shadow-md">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-2xl bg-amber-400 text-amber-950 flex items-center justify-center font-black text-xl shadow-md border border-amber-500/30">
+          <div className="w-12 h-12 rounded-2xl bg-[#FBBC04] text-amber-950 flex items-center justify-center font-black text-xl shadow-md border border-amber-500/30">
             🏆
           </div>
           <div>
-            <h2 className="text-2xl font-black text-white">Bảng Tiến Độ & Năng Lực Mastery Triết Học</h2>
-            <p className="text-xs text-blue-100 font-semibold">
+            <h2 className="text-2xl font-black text-[#172554]">Bảng Tiến Độ & Năng Lực Mastery Triết Học</h2>
+            <p className="text-xs text-[#475569] font-bold">
               Đánh giá đa chiều 5 chỉ số năng lực & Lịch ôn tập ngắt quãng (Spaced Repetition)
             </p>
           </div>
@@ -22,43 +22,43 @@ export const MasteryDashboardView: React.FC = () => {
 
       {/* 5-Dimensional Mastery Radar Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div className="card-3d p-5 text-center space-y-2 border border-slate-200 shadow-2xs">
-          <div className="text-xs font-black text-slate-800">HIỂU BẢN CHẤT</div>
-          <div className="text-3xl font-black text-blue-700 font-mono">92%</div>
-          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-            <div className="bg-blue-700 h-full w-[92%]" />
+        <div className="card-3d p-5 text-center space-y-2 bg-pastel-blue border border-blue-200 shadow-2xs">
+          <div className="text-xs font-black text-[#172554]">HIỂU BẢN CHẤT</div>
+          <div className="text-3xl font-black text-[#4285F4] font-mono">92%</div>
+          <div className="w-full bg-blue-200/60 h-2.5 rounded-full overflow-hidden">
+            <div className="bg-[#4285F4] h-full w-[92%]" />
           </div>
         </div>
 
-        <div className="card-3d p-5 text-center space-y-2 border border-slate-200 shadow-2xs">
-          <div className="text-xs font-black text-slate-800">TỰ NHỚ (RECALL)</div>
-          <div className="text-3xl font-black text-amber-800 font-mono">85%</div>
-          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-            <div className="bg-amber-500 h-full w-[85%]" />
+        <div className="card-3d p-5 text-center space-y-2 bg-pastel-cream border border-amber-200 shadow-2xs">
+          <div className="text-xs font-black text-[#172554]">TỰ NHỚ (RECALL)</div>
+          <div className="text-3xl font-black text-[#D97706] font-mono">85%</div>
+          <div className="w-full bg-amber-200/60 h-2.5 rounded-full overflow-hidden">
+            <div className="bg-[#FBBC04] h-full w-[85%]" />
           </div>
         </div>
 
-        <div className="card-3d p-5 text-center space-y-2 border border-slate-200 shadow-2xs">
-          <div className="text-xs font-black text-slate-800">VẬN DỤNG THỰC TIỄN</div>
-          <div className="text-3xl font-black text-emerald-800 font-mono">78%</div>
-          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-            <div className="bg-emerald-600 h-full w-[78%]" />
+        <div className="card-3d p-5 text-center space-y-2 bg-pastel-mint border border-emerald-200 shadow-2xs">
+          <div className="text-xs font-black text-[#172554]">VẬN DỤNG THỰC TIỄN</div>
+          <div className="text-3xl font-black text-[#34A853] font-mono">78%</div>
+          <div className="w-full bg-emerald-200/60 h-2.5 rounded-full overflow-hidden">
+            <div className="bg-[#34A853] h-full w-[78%]" />
           </div>
         </div>
 
-        <div className="card-3d p-5 text-center space-y-2 border border-slate-200 shadow-2xs">
-          <div className="text-xs font-black text-slate-800">DÀN Ý TỰ LUẬN</div>
-          <div className="text-3xl font-black text-indigo-800 font-mono">88%</div>
-          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-            <div className="bg-indigo-700 h-full w-[88%]" />
+        <div className="card-3d p-5 text-center space-y-2 bg-pastel-lavender border border-purple-200 shadow-2xs">
+          <div className="text-xs font-black text-[#172554]">DÀN Ý TỰ LUẬN</div>
+          <div className="text-3xl font-black text-[#6366F1] font-mono">88%</div>
+          <div className="w-full bg-indigo-200/60 h-2.5 rounded-full overflow-hidden">
+            <div className="bg-[#6366F1] h-full w-[88%]" />
           </div>
         </div>
 
-        <div className="card-3d p-5 text-center space-y-2 border border-slate-200 shadow-2xs">
-          <div className="text-xs font-black text-slate-800">THI ĐÓNG SÁCH</div>
-          <div className="text-3xl font-black text-purple-800 font-mono">82%</div>
-          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-            <div className="bg-purple-700 h-full w-[82%]" />
+        <div className="card-3d p-5 text-center space-y-2 bg-pastel-pink border border-pink-200 shadow-2xs">
+          <div className="text-xs font-black text-[#172554]">THI ĐÓNG SÁCH</div>
+          <div className="text-3xl font-black text-[#EA4335] font-mono">82%</div>
+          <div className="w-full bg-pink-200/60 h-2.5 rounded-full overflow-hidden">
+            <div className="bg-[#EA4335] h-full w-[82%]" />
           </div>
         </div>
       </div>

@@ -78,7 +78,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col font-sans">
+    <div className="min-h-screen bg-[#F3F8FF] bg-gradient-to-b from-[#F3F8FF] via-white to-[#FFF0F6] flex flex-col font-sans">
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -102,13 +102,13 @@ export default function HomePage() {
 
             {activeTab === 'chapters' && (
               <div className="max-w-7xl mx-auto space-y-6 pb-16">
-                <div className="card-3d p-6 bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white rounded-3xl shadow-lg border-2 border-blue-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="card-3d p-6 bg-pastel-blue rounded-3xl border-2 border-blue-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div>
                     <span className="bg-[#4285F4] text-white text-[11px] font-black px-3 py-1 rounded-full shadow-2xs">
                       GIÁO TRÌNH CHUẨN NGUỒN A
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-black text-white mt-2">Danh Sách 11 Chương & 150 Chủ Đề</h2>
-                    <p className="text-xs text-blue-200 font-semibold mt-1">
+                    <h2 className="text-2xl sm:text-3xl font-black text-[#172554] mt-2">Danh Sách 11 Chương & 150 Chủ Đề</h2>
+                    <p className="text-xs text-[#475569] font-bold mt-1">
                       Tra cứu toàn bộ chương mục Giáo trình Triết học Mác - Lênin (Bộ Giáo dục & Đào tạo, Trang 7-556)
                     </p>
                   </div>
