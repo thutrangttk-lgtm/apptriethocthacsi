@@ -26,97 +26,138 @@ interface ChapterCardProps {
   onSelectTopic: (topicId: string) => void;
 }
 
+const CHAPTER_ICONS: Record<number, string> = {
+  1: '💡', // Triết học & Vai trò
+  2: '🗿', // Lịch sử triết học
+  3: '⚖️', // Triết học Mác - Lênin
+  4: '🧠', // Duy vật biện chứng
+  5: '🧩', // Phép biện chứng
+  6: '🏛️', // Lý luận nhận thức
+  7: '📚', // Chủ nghĩa duy vật lịch sử
+  8: '🌍', // Hình thái KT-XH
+  9: '🔗', // Giai cấp & Dân tộc
+  10: '🎓', // Nhà nước & Pháp quyền
+  11: '✍️'  // Ý thức xã hội & Con người
+};
+
 export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter, onSelectTopic }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const statusColors = {
-    'Đã nắm': 'bg-emerald-100 text-emerald-950 border-emerald-300 font-extrabold',
-    'Đang học': 'bg-blue-100 text-blue-950 border-blue-300 font-extrabold',
-    'Cần ôn': 'bg-amber-100 text-amber-950 border-amber-300 font-extrabold',
-    'Chưa học': 'bg-slate-100 text-slate-800 border-slate-300 font-extrabold'
+  const statusConfig = {
+    'Đã nắm': {
+      bg: 'bg-[#34A853]/15 text-[#34A853] border-[#34A853]/40',
+      bar: 'bg-[#34A853]',
+      percent: 100
+    },
+    'Đang học': {
+      bg: 'bg-[#4285F4]/15 text-[#2563EB] border-[#4285F4]/40',
+      bar: 'bg-[#4285F4]',
+      percent: 65
+    },
+    'Cần ôn': {
+      bg: 'bg-[#FBBC04]/20 text-amber-950 border-[#FBBC04]/50',
+      bar: 'bg-[#FBBC04]',
+      percent: 40
+    },
+    'Chưa học': {
+      bg: 'bg-slate-100 text-slate-700 border-slate-300',
+      bar: 'bg-slate-300',
+      percent: 0
+    }
   };
 
   const status = chapter.status || (chapter.chapter_number <= 3 ? 'Đã nắm' : chapter.chapter_number <= 6 ? 'Đang học' : 'Chưa học');
+  const config = statusConfig[status];
+  const icon = CHAPTER_ICONS[chapter.chapter_number] || '📚';
 
   return (
-    <div className="card-3d p-6 relative overflow-hidden group border border-slate-200 shadow-sm hover:shadow-md">
-      {/* Background Subtle Gradient Accent */}
-      <div className="absolute -right-8 -top-8 w-28 h-28 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-all" />
+    <div className="card-3d p-6 relative overflow-hidden group border-2 border-slate-200/90 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all rounded-3xl bg-white flex flex-col justify-between">
+      {/* Background Accent Subtle Glow */}
+      <div className="absolute -right-6 -top-6 w-24 h-24 bg-[#4285F4]/5 rounded-full blur-xl group-hover:bg-[#4285F4]/10 transition-all pointer-events-none" />
 
-      {/* Chapter Badge Header */}
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-700 via-indigo-700 to-blue-600 text-white flex items-center justify-center font-black text-lg shadow-md shadow-blue-500/20">
-            {chapter.chapter_number}
-          </div>
-          <div>
-            <span className="text-xs font-black text-blue-700 uppercase tracking-wider">
-              Chương {chapter.chapter_number}
-            </span>
-            <span className="ml-2 text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full border border-slate-300">
-              Trang {chapter.source_page_start || 7} – {chapter.source_page_end || 556}
-            </span>
-          </div>
-        </div>
-
-        <span className={`text-xs px-3 py-1 rounded-full border shadow-2xs ${statusColors[status]}`}>
-          {status}
-        </span>
-      </div>
-
-      {/* Chapter Title */}
-      <h3 className="text-base font-black text-blue-950 mb-3 leading-snug">
-        {chapter.title}
-      </h3>
-
-      {/* Meta Bar */}
-      <div className="flex items-center justify-between text-xs pt-2.5 border-t border-slate-200/80 mb-4">
-        <div className="flex items-center space-x-1.5">
-          <Layers className="w-4 h-4 text-blue-700" />
-          <span className="font-extrabold text-slate-800">{chapter.topics.length} Chủ đề chuẩn</span>
-        </div>
-        <div className="flex items-center space-x-1.5">
-          <BookOpen className="w-4 h-4 text-amber-700" />
-          <span className="font-bold text-slate-700">Giáo trình Nguồn A</span>
-        </div>
-      </div>
-
-      {/* Expand / Collapse Topics Button */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full py-2.5 px-4 bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-900 rounded-xl font-bold text-xs transition-colors flex items-center justify-center space-x-2 border border-slate-300/80"
-      >
-        <span>{expanded ? 'Ẩn danh sách chủ đề' : `Xem ${chapter.topics.length} chủ đề`}</span>
-        {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-      </button>
-
-      {/* Topic List */}
-      {expanded && (
-        <div className="mt-4 pt-3 border-t border-slate-200/80 space-y-2 max-h-72 overflow-y-auto pr-1">
-          {chapter.topics.map((topic) => (
-            <div
-              key={topic.id}
-              onClick={() => onSelectTopic(topic.id)}
-              className="p-3 bg-white hover:bg-blue-50/90 rounded-xl border border-slate-200 hover:border-blue-300 cursor-pointer transition-all flex items-center justify-between group/item shadow-2xs"
-            >
-              <div className="flex items-start space-x-2.5">
-                <span className="w-6 h-6 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center font-black text-[11px] shrink-0 mt-0.5">
-                  {topic.topic_number}
-                </span>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900 group-hover/item:text-blue-900 transition-colors leading-snug">
-                    {topic.title}
-                  </h4>
-                  <span className="text-[10px] text-slate-600 font-bold">
-                    Nguồn A (Trang {topic.source_page_start || '–'} - {topic.source_page_end || '–'})
-                  </span>
-                </div>
-              </div>
-              <Sparkles className="w-3.5 h-3.5 text-slate-400 group-hover/item:text-blue-600 transition-colors shrink-0" />
+      <div>
+        {/* Chapter Header Badge */}
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-2xl shadow-2xs shrink-0 group-hover:scale-110 transition-transform">
+              <span>{icon}</span>
             </div>
-          ))}
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-black text-[#4285F4] uppercase tracking-wider">
+                  Chương {chapter.chapter_number}
+                </span>
+                <span className="text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full border border-slate-200">
+                  Trang {chapter.source_page_start || 7}–{chapter.source_page_end || 556}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <span className={`text-[11px] font-black px-3 py-1 rounded-full border shadow-2xs shrink-0 ${config.bg}`}>
+            {status}
+          </span>
         </div>
-      )}
+
+        {/* Chapter Title */}
+        <h3 className="text-base font-black text-slate-900 mb-3 leading-snug">
+          {chapter.title}
+        </h3>
+      </div>
+
+      <div>
+        {/* Progress Bar & Meta */}
+        <div className="space-y-2 mb-4 pt-2 border-t border-slate-100">
+          <div className="flex items-center justify-between text-xs text-slate-700 font-bold">
+            <span className="flex items-center space-x-1">
+              <Layers className="w-3.5 h-3.5 text-[#4285F4]" />
+              <span>{chapter.topics.length} Chủ đề chuẩn</span>
+            </span>
+            <span className="font-mono text-slate-900 font-black">{config.percent}%</span>
+          </div>
+
+          <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200/60">
+            <div className={`h-full transition-all duration-500 ${config.bar}`} style={{ width: `${config.percent}%` }} />
+          </div>
+        </div>
+
+        {/* Expand / Collapse Topics Button */}
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="w-full py-2.5 px-4 bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-[#4285F4] rounded-2xl font-black text-xs transition-colors flex items-center justify-center space-x-2 border border-slate-200"
+        >
+          <span>{expanded ? 'Ẩn danh sách chủ đề' : `Xem ${chapter.topics.length} chủ đề`}</span>
+          {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+        </button>
+
+        {/* Topic List Drawer */}
+        {expanded && (
+          <div className="mt-4 pt-3 border-t border-slate-200 space-y-2 max-h-72 overflow-y-auto pr-1">
+            {chapter.topics.map((topic) => (
+              <div
+                key={topic.id}
+                onClick={() => onSelectTopic(topic.id)}
+                className="p-3 bg-white hover:bg-blue-50/90 rounded-xl border border-slate-200 hover:border-[#4285F4]/40 cursor-pointer transition-all flex items-center justify-between group/item shadow-2xs"
+              >
+                <div className="flex items-start space-x-2.5">
+                  <span className="w-6 h-6 rounded-lg bg-blue-100 text-[#4285F4] flex items-center justify-center font-black text-[11px] shrink-0 mt-0.5">
+                    {topic.topic_number}
+                  </span>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-slate-900 group-hover/item:text-[#4285F4] transition-colors leading-snug">
+                      {topic.title}
+                    </h4>
+                    <span className="text-[10px] text-slate-600 font-bold">
+                      Nguồn A (Trang {topic.source_page_start || '–'} - {topic.source_page_end || '–'})
+                    </span>
+                  </div>
+                </div>
+                <Sparkles className="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#4285F4] transition-colors shrink-0" />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
