@@ -85,22 +85,22 @@ export const ClosedBookExamView: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       {/* 🔒 Closed-Book Visual Focus Mode Banner */}
-      <div className="closed-book-banner p-6 rounded-3xl text-white shadow-xl flex items-center justify-between">
+      <div className="bg-slate-950 p-6 rounded-3xl text-white shadow-xl flex items-center justify-between border-b-4 border-amber-400">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-2xl bg-amber-500 text-amber-950 flex items-center justify-center font-black text-2xl shadow-md">
+          <div className="w-12 h-12 rounded-2xl bg-amber-400 text-amber-950 flex items-center justify-center font-black text-2xl shadow-md border border-amber-500/30">
             🔒
           </div>
           <div>
-            <span className="text-[11px] font-black tracking-widest text-amber-400 uppercase bg-amber-400/20 px-2.5 py-0.5 rounded-full border border-amber-400/30">
+            <span className="text-[11px] font-black tracking-widest text-amber-950 uppercase bg-amber-400 px-2.5 py-0.5 rounded-full shadow-xs">
               CHẾ ĐỘ TỰ LUẬN ĐÓNG SÁCH
             </span>
-            <h2 className="text-xl font-extrabold mt-1">ĐANG THI ĐÓNG SÁCH</h2>
+            <h2 className="text-xl font-black mt-1 text-white">ĐANG THI ĐÓNG SÁCH</h2>
           </div>
         </div>
 
         {examState === 'active' && (
-          <div className="flex items-center space-x-2 bg-amber-400 text-amber-950 font-mono font-black text-lg px-4 py-2 rounded-2xl shadow-lg animate-pulse">
-            <Clock className="w-5 h-5" />
+          <div className="flex items-center space-x-2 bg-amber-400 text-amber-950 font-mono font-black text-lg px-4 py-2 rounded-2xl shadow-lg border border-amber-500/30 animate-pulse">
+            <Clock className="w-5 h-5 text-amber-950" />
             <span>{formatTime(timeLeft)}</span>
           </div>
         )}
@@ -108,10 +108,10 @@ export const ClosedBookExamView: React.FC = () => {
 
       {/* Intro Screen */}
       {examState === 'intro' && (
-        <div className="card-3d p-8 space-y-6">
+        <div className="card-3d p-8 space-y-6 border border-slate-200 shadow-md">
           <div className="space-y-2">
-            <h3 className="text-xl font-black text-slate-900">Chọn Chế Độ Luyện Thi Đóng Sách</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-xl font-black text-blue-950">Chọn Chế Độ Luyện Thi Đóng Sách</h3>
+            <p className="text-xs text-slate-700 font-bold leading-relaxed">
               Chế độ thi bảo mật: Đã ẩn toàn bộ giáo trình, ghi chú và trích dẫn Nguồn A. Chỉ sử dụng kiến thức bạn đã ghi nhớ.
             </p>
           </div>
@@ -119,32 +119,32 @@ export const ClosedBookExamView: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div
               onClick={() => setMode('15min')}
-              className={`p-5 rounded-2xl border cursor-pointer transition-all ${
-                mode === '15min' ? 'bg-blue-50 border-blue-600 ring-2 ring-blue-500' : 'bg-white border-slate-200'
+              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
+                mode === '15min' ? 'bg-blue-50 border-blue-700 ring-2 ring-blue-600 shadow-md' : 'bg-white border-slate-300 hover:border-blue-400'
               }`}
             >
-              <div className="font-extrabold text-sm text-slate-900">15 Phút</div>
-              <div className="text-xs text-slate-500 mt-1">Khởi động nhanh (5 câu hỏi)</div>
+              <div className="font-black text-sm text-blue-950">15 Phút</div>
+              <div className="text-xs text-slate-700 font-bold mt-1">Khởi động nhanh (5 câu hỏi)</div>
             </div>
 
             <div
               onClick={() => setMode('30min')}
-              className={`p-5 rounded-2xl border cursor-pointer transition-all ${
-                mode === '30min' ? 'bg-blue-50 border-blue-600 ring-2 ring-blue-500' : 'bg-white border-slate-200'
+              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
+                mode === '30min' ? 'bg-blue-50 border-blue-700 ring-2 ring-blue-600 shadow-md' : 'bg-white border-slate-300 hover:border-blue-400'
               }`}
             >
-              <div className="font-extrabold text-sm text-slate-900">30 Phút</div>
-              <div className="text-xs text-slate-500 mt-1">Ôn tập chuyên sâu (10 câu hỏi)</div>
+              <div className="font-black text-sm text-blue-950">30 Phút</div>
+              <div className="text-xs text-slate-700 font-bold mt-1">Ôn tập chuyên sâu (10 câu hỏi)</div>
             </div>
 
             <div
               onClick={() => setMode('component_40')}
-              className={`p-5 rounded-2xl border cursor-pointer transition-all ${
-                mode === 'component_40' ? 'bg-blue-50 border-blue-600 ring-2 ring-blue-500' : 'bg-white border-slate-200'
+              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
+                mode === 'component_40' ? 'bg-blue-50 border-blue-700 ring-2 ring-blue-600 shadow-md' : 'bg-white border-slate-300 hover:border-blue-400'
               }`}
             >
-              <div className="font-extrabold text-sm text-slate-900">40 Phút (Bộ phần 40%)</div>
-              <div className="text-xs text-slate-500 mt-1">Mô phỏng bài thi chính thức</div>
+              <div className="font-black text-sm text-blue-950">40 Phút (Bộ phần 40%)</div>
+              <div className="text-xs text-slate-700 font-bold mt-1">Mô phỏng bài thi chính thức</div>
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export const ClosedBookExamView: React.FC = () => {
             <button
               onClick={handleStartExam}
               disabled={loading}
-              className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-500/25 hover:scale-[1.01] transition-all flex items-center justify-center space-x-2"
+              className="w-full py-3.5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-black text-sm rounded-xl shadow-lg shadow-blue-500/25 hover:scale-[1.01] transition-all flex items-center justify-center space-x-2"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <ShieldCheck className="w-5 h-5 text-amber-300" />}
               <span>BẮT ĐẦU BÀI THI ĐÓNG SÁCH</span>
@@ -165,12 +165,12 @@ export const ClosedBookExamView: React.FC = () => {
       {examState === 'active' && examData && (
         <div className="space-y-6">
           {examData.questions.map((q: any, idx: number) => (
-            <div key={q.id} className="card-3d p-6 space-y-4">
-              <div className="flex items-center space-x-2">
-                <span className="w-7 h-7 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-xs">
+            <div key={q.id} className="card-3d p-6 space-y-4 border border-slate-200 shadow-sm">
+              <div className="flex items-center space-x-2.5">
+                <span className="w-7 h-7 rounded-xl bg-blue-700 text-white flex items-center justify-center font-black text-xs shrink-0">
                   {idx + 1}
                 </span>
-                <h4 className="text-sm font-extrabold text-slate-900">
+                <h4 className="text-sm font-black text-blue-950 leading-snug">
                   {q.question_text}
                 </h4>
               </div>
@@ -180,8 +180,8 @@ export const ClosedBookExamView: React.FC = () => {
                   {q.options.map((opt: string, oIdx: number) => (
                     <label
                       key={oIdx}
-                      className={`p-3 rounded-xl border flex items-center space-x-3 cursor-pointer transition-colors ${
-                        userAnswers[q.id] === opt ? 'bg-blue-50 border-blue-500 font-bold' : 'bg-slate-50 border-slate-200'
+                      className={`p-3.5 rounded-xl border-2 flex items-center space-x-3 cursor-pointer transition-colors ${
+                        userAnswers[q.id] === opt ? 'bg-blue-100/90 border-blue-600 font-black text-blue-950 shadow-2xs' : 'bg-slate-50 border-slate-300 hover:bg-blue-50/60 font-bold text-slate-800'
                       }`}
                     >
                       <input
@@ -190,9 +190,9 @@ export const ClosedBookExamView: React.FC = () => {
                         value={opt}
                         checked={userAnswers[q.id] === opt}
                         onChange={() => setUserAnswers({ ...userAnswers, [q.id]: opt })}
-                        className="text-blue-600 focus:ring-blue-500"
+                        className="text-blue-700 focus:ring-blue-600 w-4 h-4"
                       />
-                      <span className="text-xs text-slate-800">{opt}</span>
+                      <span className="text-xs leading-normal">{opt}</span>
                     </label>
                   ))}
                 </div>
@@ -202,7 +202,7 @@ export const ClosedBookExamView: React.FC = () => {
                   onChange={e => setUserAnswers({ ...userAnswers, [q.id]: e.target.value })}
                   placeholder="Nhập câu trả lời tự luận đóng sách..."
                   rows={4}
-                  className="w-full p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900"
+                  className="w-full p-3 text-xs bg-white border border-slate-300 rounded-xl text-slate-900 font-medium focus:ring-2 focus:ring-blue-500"
                 />
               )}
             </div>

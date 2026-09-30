@@ -76,32 +76,32 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-12">
       {/* Top Topic Selector Dropdown / Search */}
-      <div className="card-3d p-6 bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg">
+      <div className="card-3d p-6 bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white shadow-lg border border-blue-800">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-bold text-amber-300 uppercase tracking-widest bg-amber-400/20 px-3 py-1 rounded-full border border-amber-400/30">
+            <span className="text-xs font-black text-amber-950 uppercase tracking-wider bg-amber-400 px-3 py-1 rounded-full border border-amber-300 shadow-xs">
               TRẢI NGHIỆM HỌC TIẾN TRÌNH (12 LỚP HỌC TẬP)
             </span>
-            <h2 className="text-2xl font-black mt-2 leading-tight">
+            <h2 className="text-2xl font-black mt-2.5 leading-tight text-white">
               Chủ đề {currentTopic.topic_number}: {currentTopic.title}
             </h2>
-            <div className="flex items-center space-x-2 text-xs text-blue-200 mt-1">
-              <BookMarked className="w-4 h-4 text-yellow-400" />
+            <div className="flex items-center space-x-2 text-xs text-blue-100 font-bold mt-1.5">
+              <BookMarked className="w-4 h-4 text-amber-300" />
               <span>Căn cứ Giáo trình Nguồn A (Trang {currentTopic.source_page_start || 7} – {currentTopic.source_page_end || 8})</span>
             </div>
           </div>
 
           <div className="shrink-0 w-full md:w-80">
-            <label className="block text-[11px] font-bold text-blue-200 uppercase mb-1">
+            <label className="block text-[11px] font-black text-blue-100 uppercase mb-1">
               Chọn chủ đề khác ({topics.length} chủ đề)
             </label>
             <select
               value={currentTopic.id}
               onChange={(e) => onSelectTopic(e.target.value)}
-              className="w-full bg-white/10 text-white text-xs font-semibold p-3 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="w-full bg-slate-950 text-white text-xs font-bold p-3 rounded-xl border-2 border-blue-400/50 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
               {topics.map(t => (
-                <option key={t.id} value={t.id} className="text-slate-900 font-medium">
+                <option key={t.id} value={t.id} className="text-slate-900 font-bold bg-white">
                   Topic {t.topic_number}: {t.title} (Trang {t.source_page_start}-{t.source_page_end})
                 </option>
               ))}
@@ -111,7 +111,7 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
       </div>
 
       {/* Progressive 12 Learning Modes Tabs */}
-      <div className="card-3d p-3 overflow-x-auto scrollbar-none">
+      <div className="card-3d p-3 overflow-x-auto scrollbar-none border border-slate-200">
         <div className="flex items-center space-x-2 min-w-max">
           {LEARNING_MODES.map((m) => {
             const IconComp = m.icon;
@@ -132,11 +132,11 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
                 }}
                 className={`flex items-center space-x-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                    : 'bg-slate-50 text-slate-700 hover:bg-blue-50 hover:text-blue-700 border border-slate-200/60'
+                    ? 'bg-blue-700 text-white shadow-md shadow-blue-700/20'
+                    : 'bg-slate-100 text-slate-800 hover:bg-blue-50 hover:text-blue-900 border border-slate-300/80'
                 }`}
               >
-                <IconComp className={`w-4 h-4 ${isActive ? 'text-white' : 'text-blue-600'}`} />
+                <IconComp className={`w-4 h-4 ${isActive ? 'text-white' : 'text-blue-700'}`} />
                 <span>{m.label}</span>
               </button>
             );
@@ -145,49 +145,49 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
       </div>
 
       {/* Main Content Card Displaying RAG Content */}
-      <div className="card-3d p-8 relative min-h-[400px]">
+      <div className="card-3d p-8 relative min-h-[400px] border border-slate-200 shadow-sm">
         {loading ? (
-          <div className="py-20 text-center text-slate-500 flex flex-col items-center justify-center space-y-3">
-            <Loader2 className="w-10 h-10 animate-spin text-blue-600" />
-            <p className="text-sm font-semibold text-slate-700">Đang truy xuất kiến thức chuẩn Nguồn A cho chủ đề này...</p>
+          <div className="py-20 text-center text-slate-600 flex flex-col items-center justify-center space-y-3">
+            <Loader2 className="w-10 h-10 animate-spin text-blue-700" />
+            <p className="text-sm font-bold text-slate-800">Đang truy xuất kiến thức chuẩn Nguồn A cho chủ đề này...</p>
           </div>
         ) : explanationData ? (
           <div className="space-y-6">
             {/* Source Page Citation Banner */}
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-2xl">
-              <div className="flex items-center space-x-2 text-xs font-bold text-amber-900">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <div className="flex items-center justify-between p-4 bg-amber-100/80 border-2 border-amber-300 rounded-2xl">
+              <div className="flex items-center space-x-2 text-xs font-extrabold text-amber-950">
+                <CheckCircle2 className="w-4.5 h-4.5 text-emerald-700" />
                 <span>Trích xuất từ Nguồn A – Giáo trình Triết học Mác - Lênin (Bộ Giáo dục & Đào tạo)</span>
               </div>
 
               {explanationData.source_pages && explanationData.source_pages.length > 0 && (
-                <span className="text-xs font-mono font-bold bg-amber-200/80 text-amber-950 px-2.5 py-1 rounded-full">
+                <span className="text-xs font-mono font-black bg-amber-200 text-amber-950 px-3 py-1 rounded-full border border-amber-400">
                   Trang {explanationData.source_pages.join(', ')}
                 </span>
               )}
             </div>
 
             {/* Explanation Body */}
-            <div className="prose prose-slate max-w-none text-slate-800 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+            <div className="prose prose-slate max-w-none text-slate-900 font-normal text-sm sm:text-base leading-relaxed whitespace-pre-line">
               {explanationData.content}
             </div>
 
             {/* Action Footer */}
-            <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs text-slate-500 font-medium">
+            <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-xs text-slate-700 font-bold">
                 Đã hiểu phần này? Chuyển sang bước tự nhớ hoặc luyện dàn ý.
               </div>
 
               <div className="flex items-center space-x-3">
                 <button
                   onClick={() => setActiveTab('recall')}
-                  className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold text-xs rounded-xl shadow-md transition-colors"
+                  className="px-4 py-2.5 bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-xs rounded-xl shadow-md border border-amber-500/30 transition-colors"
                 >
                   🙈 Thử Đóng Sách Tự Nhớ
                 </button>
                 <button
                   onClick={() => setActiveTab('outline')}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-colors"
+                  className="px-4 py-2.5 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs rounded-xl shadow-md transition-colors"
                 >
                   ✍️ Lập Dàn Ý Tự Luận
                 </button>
