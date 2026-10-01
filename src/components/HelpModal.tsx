@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { X, HelpCircle, Lightbulb, Sparkles, BookOpen, ChevronRight } from 'lucide-react';
+import { X as XIcon, HelpCircle as HelpIcon, Lightbulb as LightbulbIcon, Sparkles as SparklesIcon, BookOpen as BookOpenIcon, ChevronRight as ChevronRightIcon } from 'lucide-react';
 
 interface HelpModalProps {
   isOpen: boolean;
@@ -24,7 +24,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
           }}
           className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-800 rounded-full hover:bg-slate-100 transition-colors"
         >
-          <X className="w-5 h-5" />
+          <XIcon className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
@@ -44,7 +44,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
         {!selectedOption ? (
           <div className="space-y-3 pt-2">
             <p className="text-xs text-slate-600 font-bold">
-              Đừng lo lắng! Bạn muốn hệ thống hỗ trợ theo cách nào?
+              Hãy chọn cách trợ giúp mới (dùng ngôn ngữ và ví dụ mới hoàn toàn):
             </p>
 
             <button
@@ -52,13 +52,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
               className="w-full p-4 rounded-2xl border-2 border-blue-200 bg-pastel-blue hover:bg-blue-100/80 transition-all text-left flex items-center justify-between group shadow-2xs"
             >
               <div className="flex items-center space-x-3">
-                <span className="text-2xl">💡</span>
+                <span className="text-2xl">🗺️</span>
                 <div>
-                  <div className="text-sm font-black text-[#172554]">1. Giải thích đơn giản hơn nữa</div>
-                  <div className="text-xs text-slate-600 font-semibold">Dùng hình ảnh ẩn dụ đời sống quen thuộc (Chiếc kính & Đôi chân)</div>
+                  <div className="text-sm font-black text-[#172554]">1. Cần cách diễn giải mới hoàn toàn</div>
+                  <div className="text-xs text-slate-600 font-semibold">Ẩn dụ mới: "Bản đồ GPS chỉ đường & Cách bạn lái xe"</div>
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-[#4285F4] group-hover:translate-x-1 transition-transform" />
+              <ChevronRightIcon className="w-5 h-5 text-[#4285F4] group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
@@ -66,13 +66,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
               className="w-full p-4 rounded-2xl border-2 border-amber-200 bg-pastel-cream hover:bg-amber-100/80 transition-all text-left flex items-center justify-between group shadow-2xs"
             >
               <div className="flex items-center space-x-3">
-                <span className="text-2xl">🏫</span>
+                <span className="text-2xl">🗣️</span>
                 <div>
-                  <div className="text-sm font-black text-[#172554]">2. Cho ví dụ khác trong Tiếng Anh</div>
-                  <div className="text-xs text-slate-600 font-semibold">Ví dụ thực tế trong giờ dạy nói & xử lý lỗi của học sinh</div>
+                  <div className="text-sm font-black text-[#172554]">2. Cho ví dụ dạy Tiếng Anh mới</div>
+                  <div className="text-xs text-slate-600 font-semibold">Ví dụ dạy Phát âm (Pronunciation) & Ngữ điệu (Intonation)</div>
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-[#B45309] group-hover:translate-x-1 transition-transform" />
+              <ChevronRightIcon className="w-5 h-5 text-[#B45309] group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
@@ -82,11 +82,11 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">📖</span>
                 <div>
-                  <div className="text-sm font-black text-[#172554]">3. Giải nghĩa các từ khó</div>
-                  <div className="text-xs text-slate-600 font-semibold">Từ điển giải thích 4 thuật ngữ cốt lõi siêu ngắn gọn</div>
+                  <div className="text-sm font-black text-[#172554]">3. Tra từ điển thuật ngữ siêu nhanh</div>
+                  <div className="text-xs text-slate-600 font-semibold">Bấm để giải nghĩa từ khó mà không bị lặp lại từ rắc rối khác</div>
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-[#6366F1] group-hover:translate-x-1 transition-transform" />
+              <ChevronRightIcon className="w-5 h-5 text-[#6366F1] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         ) : (
@@ -102,18 +102,18 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
             {selectedOption === 'simpler' && (
               <div className="p-5 bg-pastel-blue rounded-2xl border-2 border-blue-300 space-y-3 shadow-sm">
                 <div className="flex items-center space-x-2 text-sm font-black text-[#172554]">
-                  <Lightbulb className="w-5 h-5 text-[#FBBC04]" />
-                  <span>Hình Ảnh Ẩn Dụ "Chiếc Kính Mắt & Đôi Chân"</span>
+                  <LightbulbIcon className="w-5 h-5 text-[#FBBC04]" />
+                  <span>Ẩn Dụ Mới: Bản Đồ GPS (Thế Giới Quan) & Lái Xe (Phương Pháp Luận)</span>
                 </div>
                 <p className="text-sm text-slate-800 leading-relaxed font-medium">
-                  Hãy tưởng tượng bạn đi ra đường và đeo một <strong>Chiếc kính râm màu đen</strong> (đó là <em>Thế giới quan</em>). 
-                  Bạn nhìn thấy trời âm u và quyết định <strong>mang theo ô</strong> (đó là <em>Phương pháp luận</em>).
+                  Hãy tưởng tượng bạn bật GPS khi lái xe.
                 </p>
-                <p className="text-sm text-slate-800 leading-relaxed font-medium">
-                  Nếu bạn đeo <strong>Kính màu hồng</strong>, bạn thấy cảnh vật tươi vui và quyết định <strong>đi dạo</strong>.
-                </p>
+                <ul className="list-disc list-inside text-xs text-slate-800 space-y-1.5 font-medium">
+                  <li><strong>Bản đồ GPS (Thế giới quan):</strong> Cho bạn thấy toàn bộ bản đồ thực tế địa hình – đường nào tắc, đường nào thông.</li>
+                  <li><strong>Cách bạn lái xe (Phương pháp luận):</strong> Nhìn bản đồ báo tắc đường (Thế giới quan), bạn chọn rẽ sang đường tránh (Phương pháp luận).</li>
+                </ul>
                 <div className="p-3 bg-white/90 rounded-xl border border-blue-200 text-xs font-black text-[#172554]">
-                  👉 Tóm lại: Bạn đeo kính màu gì (Thế giới quan), bạn sẽ quyết định hành động như thế ấy (Phương pháp luận)!
+                  👉 GPS báo thực tế thế nào (Thế giới quan), bạn sẽ tay lái rẽ hướng như thế ấy (Phương pháp luận)!
                 </div>
               </div>
             )}
@@ -121,18 +121,18 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
             {selectedOption === 'another_example' && (
               <div className="p-5 bg-pastel-cream rounded-2xl border-2 border-amber-300 space-y-3 shadow-sm">
                 <div className="flex items-center space-x-2 text-sm font-black text-[#B45309]">
-                  <Sparkles className="w-5 h-5 text-[#FBBC04]" />
-                  <span>Ví Dụ Lớp Học Tiếng Anh: Sửa Lỗi Nói Cho Học Sinh</span>
+                  <SparklesIcon className="w-5 h-5 text-[#FBBC04]" />
+                  <span>Ví Dụ Mới: Dạy Phát Âm Tiếng Anh (Pronunciation)</span>
                 </div>
-                <div className="space-y-2 text-sm text-slate-800 font-medium leading-relaxed">
+                <div className="space-y-2 text-xs text-slate-800 font-medium leading-relaxed">
                   <p>
-                    <strong>1. Thế giới quan duy vật khoa học:</strong> Cô Trang tin rằng <em>"Mắc lỗi là bước tất yếu khi học ngôn ngữ mới, không phải học sinh dốt hay lười"</em>.
+                    <strong>1. Thế giới quan:</strong> Bạn hiểu rằng học sinh Việt Nam phát âm sai âm /θ/ (như trong "think") vì khẩu hình cơ miệng tiếng Việt không có âm này ➔ Đây là sự thật nguyên nhân thực tế khách quan.
                   </p>
                   <p>
-                    <strong>2. Phương pháp luận tương ứng:</strong> Trong giờ nói Tiếng Anh, cô Trang không ngắt lời trừ điểm lỗi sai ngay lập tức (khiến học sinh sợ). Thay vào đó, cô ghi nốt lỗi lại và tổ chức chữa lỗi chung cả lớp ở cuối giờ.
+                    <strong>2. Phương pháp luận:</strong> Bạn thiết kế bài luyện khẩu hình (đặt đầu lưỡi giữa hai răng) và cho học sinh soi gương thực hành.
                   </p>
                   <div className="p-3 bg-white/90 rounded-xl border border-amber-200 text-xs font-black text-[#B45309]">
-                    👉 Góc nhìn đúng ➔ Áp dụng phương pháp sư phạm nhân văn và hiệu quả!
+                    👉 Hiểu đúng nguyên nhân vật lý/khẩu hình (Thế giới quan) ➔ Áp dụng bài tập soi gương (Phương pháp luận)!
                   </div>
                 </div>
               </div>
@@ -141,16 +141,16 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
             {selectedOption === 'hard_terms' && (
               <div className="p-5 bg-pastel-lavender rounded-2xl border-2 border-purple-300 space-y-3 shadow-sm">
                 <div className="flex items-center space-x-2 text-sm font-black text-[#6366F1]">
-                  <BookOpen className="w-5 h-5 text-[#6366F1]" />
-                  <span>Giải Nghĩa 4 Thuật Ngữ Cốt Lõi (Click để xem chi tiết)</span>
+                  <BookOpenIcon className="w-5 h-5 text-[#6366F1]" />
+                  <span>Từ Điển Giải Nghĩa Siêu Ngắn Gọn (Click vào thuật ngữ):</span>
                 </div>
 
                 <div className="space-y-2">
                   {[
                     { term: 'Thế giới quan', desc: 'Mắt kính nhìn đời – Niềm tin về bản chất thế giới' },
-                    { term: 'Phương pháp luận', desc: 'Bản đồ hành động – Nguyên tắc chỉ đạo công việc' },
-                    { term: 'Duy vật biện chứng', desc: 'Nhìn sự vật trong thực tế luôn vận động và biến đổi' },
-                    { term: 'Duy tâm', desc: 'Coi ý thức/tinh thần hay duyên số quyết định tất cả' }
+                    { term: 'Phương pháp luận', desc: 'Bản đồ hành động – Hệ thống nguyên tắc chỉ đạo công việc' },
+                    { term: 'Duy vật biện chứng', desc: 'Lấy thực tế làm gốc, nhìn mọi thứ luôn biến đổi và phát triển' },
+                    { term: 'Duy tâm', desc: 'Coi ý thức/tư tưởng hay duyên số quyết định tất cả' }
                   ].map((t, idx) => (
                     <div
                       key={idx}
@@ -163,7 +163,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, onOpenTer
                         <span className="text-xs font-black text-[#172554]">{t.term}: </span>
                         <span className="text-xs text-slate-700 font-medium">{t.desc}</span>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-purple-600" />
+                      <ChevronRightIcon className="w-4 h-4 text-purple-600" />
                     </div>
                   ))}
                 </div>
