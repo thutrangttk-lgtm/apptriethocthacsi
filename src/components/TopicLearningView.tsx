@@ -5,6 +5,7 @@ import { TopicItem } from './ChapterCard';
 import { FormattedMarkdown } from './FormattedMarkdown';
 import { TermGlossModal, TermDefinition } from './TermGlossModal';
 import { HelpModal } from './HelpModal';
+import { GlobalSearch } from './GlobalSearch';
 import {
   Brain, Zap, BookOpen, Clock, Heart, Key, AlertTriangle, Globe, Lock,
   Mic, FileEdit, GraduationCap, CheckCircle2, ChevronRight, ChevronLeft,
@@ -145,6 +146,9 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-16">
+      {/* 🔍 GLOBAL KEYWORD & NATURAL LANGUAGE SEARCH BAR */}
+      <GlobalSearch onSelectTopic={onSelectTopic} onOpenTermGloss={openGloss} />
+
       {/* Top Banner with Learner Identity & Clear Topic Information */}
       <div className="card-3d p-6 bg-pastel-blue rounded-3xl border-2 border-blue-200/80 shadow-md">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

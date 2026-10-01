@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChapterCard, ChapterItem } from './ChapterCard';
+import { GlobalSearch } from './GlobalSearch';
 import { Brain, GraduationCap, Award, BookOpen, Clock, ShieldCheck, Sparkles, Target, Zap, ArrowRight, Flame, CheckCircle, RefreshCw } from 'lucide-react';
 
 interface DashboardViewProps {
@@ -29,6 +30,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ chapters, onSelect
       {/* Ambient Pastel Background Glow Blobs */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-[#EAF4FF]/80 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-60 right-10 w-96 h-96 bg-[#FFF0F6]/80 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* 🔍 GLOBAL KEYWORD & NATURAL LANGUAGE SEARCH BAR */}
+      <GlobalSearch onSelectTopic={(topicId) => {
+        onSelectTopic(topicId);
+        setActiveTab('topic');
+      }} />
 
       {/* 1. PERSONALIZED LEARNER HERO SECTION */}
       <div className="card-3d p-6 sm:p-8 bg-gradient-to-br from-[#EAF4FF] via-[#F3EEFF] to-[#FFF0F6] text-[#172554] border-2 border-blue-200/80 relative overflow-hidden shadow-xl rounded-3xl">
