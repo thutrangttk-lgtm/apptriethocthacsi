@@ -62,7 +62,8 @@ export default function HomePage() {
 
         setChapters(chapterList);
         if (topData.length > 0) {
-          setSelectedTopicId(topData[0].id);
+          const topic4 = topData.find(t => t.topic_number === 4 && t.chapter_id === chapterList[0]?.id) || topData[0];
+          setSelectedTopicId(topic4.id);
         }
       }
     } catch (err) {
