@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { TopicItem } from './ChapterCard';
+import { FormattedMarkdown } from './FormattedMarkdown';
 import { Brain, Zap, BookOpen, Clock, Heart, Key, AlertTriangle, Globe, Lock, Mic, FileEdit, GraduationCap, CheckCircle2, ChevronRight, ChevronLeft, Loader2, BookMarked, Sparkles } from 'lucide-react';
 
 interface TopicLearningViewProps {
@@ -43,7 +44,7 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
   const currentStep = LEARNING_JOURNEY_STEPS[activeStepIdx] || LEARNING_JOURNEY_STEPS[0];
 
   useEffect(() => {
-    if (currentTopicId && currentStep.id !== 'recall' && currentStep.id !== 'outline' && currentStep.id !== 'exam') {
+    if (currentTopicId) {
       fetchExplanation(currentTopicId, currentStep.id);
     }
   }, [currentTopicId, activeStepIdx]);
@@ -71,16 +72,7 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
   };
 
   const handleStepSelect = (idx: number) => {
-    const step = LEARNING_JOURNEY_STEPS[idx];
-    if (step.id === 'recall') {
-      setActiveTab('recall');
-    } else if (step.id === 'outline') {
-      setActiveTab('outline');
-    } else if (step.id === 'exam') {
-      setActiveTab('exam');
-    } else {
-      setActiveStepIdx(idx);
-    }
+    setActiveStepIdx(idx);
   };
 
   if (!currentTopic) {
@@ -197,9 +189,9 @@ export const TopicLearningView: React.FC<TopicLearningViewProps> = ({
                 )}
               </div>
 
-              {/* Step Explanation Body */}
-              <div className="prose prose-slate max-w-none text-slate-900 font-normal text-sm sm:text-base leading-relaxed whitespace-pre-line bg-slate-50/50 p-6 rounded-2xl border border-slate-200/80">
-                {explanationData.content}
+              {/* Step Explanation Body with Formatted Markdown Rendering */}
+              <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-200/80 shadow-2xs">
+                <FormattedMarkdown content={explanationData.content} />
               </div>
             </div>
           ) : (
